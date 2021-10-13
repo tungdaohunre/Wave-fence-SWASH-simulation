@@ -33,10 +33,15 @@ There are also many numerical models that can be suitable for simulating coastal
 
 3. SWASH Exercises
 
+Exercise: Wave propation in SWASH
+
 Before practicing, it is recommendedn that users should read the User Manual and examples on the official website of SWASH. Also, the brief guideline for installation, interpretation of commnand files and bathymetry for 1D simulation can be found [here](https://colab.research.google.com/drive/1M7YrSOv6xSdRSPI2K2ttvPI689O7bMaU).
 
-In this practice, users successfully run 1D test of wave propagation to the shore from the water depth of 10 m. The forshore slope is 1:10, uniform and rectangular. Still water level is 0.0 m. The wave conditions are regular with Hrms = 1.0 m, and T = 5.5 seconds.
+In this practice, users run 1D test of wave propagation to the shore from the water depth of 10 m. The forshore slope is 1:10, uniform and rectangular. Still water level is 0.0 m. The wave conditions are regular with **Hrms = 1.0** m, and **T = 5.5** s. And successfuly create outputs as:
+ * Root-mean-squre wave height (Hrms) at every location along the profile.
+ * Hrms at **8.0** m, **5.0** m, and **1.0** m water depth. 
+ * Plot water surface elevation at the above locations.
 
-The outputs are wave height at 8 m, 5 m, and 1 m water depth. And calculating wave heights, wavelengths, and wave periods at the same locations from elevation results.
-
-The python scripts will be given in the Exercise 02 directory.
+After completing this exercise, users should be able:
+  * Simulate wave propagtaion from a particualr water depth to the nearshore.
+  * Illustrate waves, such as wave heights, wave spectral density from time-series data. 
