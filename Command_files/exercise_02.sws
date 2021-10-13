@@ -1,25 +1,23 @@
-$********************************* HEADING ************************************
-PROJ 'exercise' 'E1'
-$ Running 1D test of wave propagation to the shore
+$******************** HEADING ********************
+PROJ 'exercise' 'E01'
+$ Running 1D test of wave propagation to the shore 
 $ Water depth at boundary is 10 m.
-$ Wave input: T = 5.5 s, Hrms = 1.0 m, Regular mode
-$ Water level = 0.0 m 
+$ Wave input: T = 5.5 s, Hrms = 1.0 m, 
+$ Water level = 0.0 m, Regular mode
 
-$******************************* MODEL INPUTs**********************************
+$****************** MODEL INPUT ******************
 $$$ Initial parameters
 SET level 0.0
 MODE DYN ONED
 COORDINATES CART
 VERTICAL 1
 INIT ZERO
-
 $$$ Wave characteristic and boundary
-CGRID REG 0. 0. 0. 120 0. 546 0
-INPGRID BOTTOM REGULAR 0. 0. 0. 546 0 0.22 0
-READINP BOTTOM 1. 'exercise_1.bot' 1 0 FREE
+CGRID REG 0. 0. 0. 110 0. 325 0
+INPGRID BOTTOM REGULAR 0. 0. 0. 325 0 0.34 0
+READINP BOTTOM 1. 'exercise_02.bot' 1 0 FREE
 BOUnd SHAPespec JONswap
 BOU SIDE W CCW BTYPE WEAK CON REGular 1.0 5.5 0
-
 $$$ Physics
 SPONgelayer E 10
 FRIC CON
@@ -29,30 +27,27 @@ VISC VERT KEPS
 
 $$$ Computation schemes
 DISCRET UPW  MOM 
-DISCRET UPW  UMOM V MUSCL
+DISCRET UPW  UMOM V MUSCL 
 DISCRET UPW  UMOM V FIRST 
-DISCRET UPW  WMOM V BDF
+DISCRET UPW  WMOM V BDF 
 DISCRET UPW  WMOM V FIRST 
 DISCRET CORR MUSCL
 TIMEI METH EXPL 0.1 0.8
 
-$******************************** OUTPUT REQUESTS *****************************
+$************** OUTPUT REQUESTS *****************
 QUANT XP HEXP 10.
 QUANTITY HSIG SETUP dur 20 min
-
 $$$ Points and frame
-FRAME 'fr' 0. 0. 0. 120 0. 480 0
-POINTS 'p0' 20.0 0. 
-POINTS 'p1' 50.0 0. 
-POINTS 'p2' 90.0 0. 
-
+FRAME 'fr' 0. 0. 0. 110 0. 440 0
+POINTS 'P1' 20.0 0.0
+POINTS 'P2' 50.0 0.0
+POINTS 'P3' 90.0 0.0
 $$$ Wave
 TABLE 'fr' HEAD 'exercise_fr.tbw' XP HRMS SETUP
-TABLE 'p0' HEAD 'exercise_p0.tbw' TSEC WATLEV OUTPUT 000200.000 000000.100 SEC
-TABLE 'p1' HEAD 'exercise_p1.tbw' TSEC WATLEV OUTPUT 000200.000 000000.100 SEC
-TABLE 'p2' HEAD 'exercise_p2.tbw' TSEC WATLEV OUTPUT 000200.000 000000.100 SEC
-
+TABLE 'P1' HEAD 'exercise_P1.tbw' TSEC WATLEV OUTPUT 000200.000 000000.100 SEC
+TABLE 'P2' HEAD 'exercise_P2.tbw' TSEC WATLEV OUTPUT 000200.000 000000.100 SEC
+TABLE 'P3' HEAD 'exercise_P3.tbw' TSEC WATLEV OUTPUT 000200.000 000000.100 SEC
 $$$ Compute
 TEST 1 0
-COMPUTE 000000.000 0.001 SEC 020000.000
+COMPUTE  000000.000 0.001  SEC  020000.000
 STOP
